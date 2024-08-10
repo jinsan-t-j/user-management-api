@@ -38,6 +38,26 @@ export interface IEnvs {
     DATABASE_NAME: string;
 
     /**
+     * The redis host.
+     */
+    REDIS_HOST: string;
+
+    /**
+     * The redis port.
+     */
+    REDIS_PORT: number;
+
+    /**
+     * The redis password.
+     */
+    REDIS_PASSWORD?: string;
+
+    /**
+     * The cache expiry in seconds.
+     */
+    CACHE_DEFAULT_TTL: number;
+
+    /**
      * The database username.
      */
     DATABASE_USERNAME: string;

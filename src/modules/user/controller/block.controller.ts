@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ApiNotFoundResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiNotFoundResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { I18nService } from 'nestjs-i18n';
 
 import { UserService } from '../services/user.service';
@@ -8,6 +8,7 @@ import { HandleBlockUserRequestDto } from '../dto';
 import type { I18nTranslations } from '../../../i18n/types/i18n.generated';
 
 @ApiTags('Block/Unblock User')
+@ApiBearerAuth('jwt-auth')
 @Controller({ path: 'user', version: '1' })
 export class BlockController {
     public constructor(
@@ -17,7 +18,9 @@ export class BlockController {
 
     @Post('block')
     @ApiOperation({ summary: 'Block a user to the database' })
-    @ApiNotFoundResponse()
+    @ApiNotFoundResponse({
+        description: 'User not found.',
+    })
     async block(
         @Body() blockUserDto: HandleBlockUserRequestDto,
     ): Promise<HandleBlockUserResponseDto> {
@@ -32,7 +35,9 @@ export class BlockController {
 
     @Post('unblock')
     @ApiOperation({ summary: 'Unblock a user to the database' })
-    @ApiNotFoundResponse()
+    @ApiNotFoundResponse({
+        description: 'User not found.',
+    })
     async unblock(
         @Body() blockUserDto: HandleBlockUserRequestDto,
     ): Promise<HandleUnBlockUserResponseDto> {

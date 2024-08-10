@@ -1,0 +1,14 @@
+{
+    "errors": {
+        "not_found": "The {entity} is not found.",
+        "internal_server": "Something went wrong."
+    },
+    "common": {
+        "created": "The {entity} is created successfully",
+        "updated": "The {entity} is updated successfully",
+        "retrieved": "The {entity} is retrieved successfully",
+        "deleted": "The {entity} is deleted successfully",
+        "blocked": "The {entity} is blocked successfully",
+        "unblocked": "The {entity} is unblocked successfully"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "string": "The {property} must be string.",
+    "date": "The {property} must be a date.",
+    "not_empty": "The {property} should not be empty.",
+    "max": "The {property} should only contain {constraints.0} characters.",
+    "min": "The {property} must at least contain a length of {constraints.0}.",
+    "already_exists": "The {property} is already been used."
+}

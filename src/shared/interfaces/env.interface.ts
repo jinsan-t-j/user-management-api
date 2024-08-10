@@ -53,6 +53,36 @@ export interface IEnvs {
     DATABASE_PORT: number;
 
     /**
+     * The algorithm used for JWT encryption & decryption.
+     */
+    JWT_ALGORITHM?: string;
+
+    /**
+     * The secret used for JWT encryption & decryption.
+     */
+    JWT_SECRET: string;
+
+    /**
+     * The issuer used for JWT generation.
+     */
+    JWT_ISSUER: string;
+
+    /**
+     * The audience for the JWT.
+     */
+    JWT_AUDIENCE: string;
+
+    /**
+     * The SUBJECT for the JWT.
+     */
+    JWT_SUBJECT: string;
+
+    /**
+     * The JWT token expiry in seconds.
+     */
+    JWT_EXPIRY: number;
+
+    /**
      * The API throttle TTL.
      */
     API_THROTTLE_TTL: number;

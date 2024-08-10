@@ -9,6 +9,7 @@ import { ConfigModuleFactory } from './utils/config-module/factory';
 import { I18nModuleFactory } from './utils/i18n/factory';
 import { ThrottlerModuleFactory } from './utils/throttler/factory/throttler-module.factory';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
     imports: [
@@ -16,6 +17,7 @@ import { UserModule } from './modules/user/user.module';
         SequelizeModule.forRootAsync(SequelizeModuleFactory),
         ThrottlerModule.forRootAsync(ThrottlerModuleFactory),
         I18nModule.forRoot(I18nModuleFactory),
+        AuthModule,
         UserModule,
     ],
     controllers: [],

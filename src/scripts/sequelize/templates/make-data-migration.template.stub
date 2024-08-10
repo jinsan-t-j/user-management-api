@@ -1,0 +1,23 @@
+import type { Migration } from 'sequelize-cli';
+
+const migration: Migration = {
+    /**
+     * The up function for the data migration.
+     *
+     * @param queryInterface - Query Interface instance.
+     */
+    async up(queryInterface) {
+        //
+    },
+
+    /**
+     * The down function for the data migration.
+     *
+     * @param queryInterface - Query Interface instance.
+     */
+    async down(queryInterface) {
+        //
+    },
+};
+
+module.exports = migration;

@@ -11,15 +11,18 @@ import {
     UseInterceptors,
 } from '@nestjs/common';
 import {
+    ApiBearerAuth,
     ApiBody,
     ApiCreatedResponse,
     ApiNoContentResponse,
+    ApiNotFoundResponse,
     ApiOkResponse,
     ApiOperation,
     ApiQuery,
     ApiTags,
 } from '@nestjs/swagger';
 import { I18nService } from 'nestjs-i18n';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 import { UserService } from '../services/user.service';
 import type { SearchUsersResponseDto } from '../dto';
@@ -37,6 +40,7 @@ import { SearchUsersRequestDto } from '../dto/search-users-request-dto';
 import { Public } from '../../../shared/decorators';
 
 @ApiTags('User')
+@ApiBearerAuth('jwt-auth')
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller({ path: 'user', version: '1' })
 export class UserController {
@@ -71,6 +75,7 @@ export class UserController {
         type: ListUsersResponseDto,
     })
     @ApiNoContentResponse({ description: 'No users found' })
+    @UseInterceptors(CacheInterceptor)
     async findAll(): Promise<ListUsersResponseDto> {
         const data = await this.userService.findAll();
 
@@ -89,6 +94,10 @@ export class UserController {
         description: 'Retrieve single user details',
         type: GetUserResponseDto,
     })
+    @ApiNotFoundResponse({
+        description: 'User not found.',
+    })
+    @UseInterceptors(CacheInterceptor)
     async findOne(@Param('uuid') uuid: string): Promise<GetUserResponseDto> {
         const data = await this.userService.findOne(uuid);
 
@@ -106,6 +115,9 @@ export class UserController {
     @ApiCreatedResponse({
         description: 'Modify existing user record',
         type: UpdateUserResponseDto,
+    })
+    @ApiNotFoundResponse({
+        description: 'User not found.',
     })
     async update(
         @Param('uuid') uuid: string,
@@ -128,6 +140,9 @@ export class UserController {
         description: 'Delete a existing user record',
         type: DeleteUserResponseDto,
     })
+    @ApiNotFoundResponse({
+        description: 'User not found.',
+    })
     async delete(@Param('uuid') uuid: string): Promise<DeleteUserResponseDto> {
         await this.userService.deleteByUuid(uuid);
 
@@ -143,6 +158,7 @@ export class UserController {
     @ApiQuery({ name: 'username', required: false, type: String })
     @ApiBody({ type: SearchUsersRequestDto, required: false })
     @ApiNoContentResponse({ description: 'No users found' })
+    @UseInterceptors(CacheInterceptor)
     async search(
         @Body() searchUsersRequestDto?: SearchUsersRequestDto,
         @Query('username') username?: string,

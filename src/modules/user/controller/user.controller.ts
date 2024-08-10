@@ -34,6 +34,7 @@ import {
 } from '../dto';
 import type { I18nTranslations } from '../../../i18n/types/i18n.generated';
 import { SearchUsersRequestDto } from '../dto/search-users-request-dto';
+import { Public } from '../../../shared/decorators';
 
 @ApiTags('User')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -44,6 +45,7 @@ export class UserController {
         private readonly i18n: I18nService<I18nTranslations>,
     ) {}
 
+    @Public()
     @Post()
     @ApiOperation({ summary: 'Create a user to the database' })
     @ApiCreatedResponse({
@@ -61,6 +63,7 @@ export class UserController {
         };
     }
 
+    @Public()
     @Get()
     @ApiOperation({ summary: 'List of users' })
     @ApiOkResponse({
@@ -79,6 +82,7 @@ export class UserController {
         };
     }
 
+    @Public()
     @Get(':uuid')
     @ApiOperation({ summary: 'Get a user' })
     @ApiOkResponse({
@@ -96,6 +100,7 @@ export class UserController {
         };
     }
 
+    @Public()
     @Patch(':uuid')
     @ApiOperation({ summary: 'Update a user' })
     @ApiCreatedResponse({
@@ -116,6 +121,7 @@ export class UserController {
         };
     }
 
+    @Public()
     @Delete(':uuid')
     @ApiOperation({ summary: 'Delete a user' })
     @ApiOkResponse({

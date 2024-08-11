@@ -10,7 +10,7 @@ import {
 import type { CreateUserRequestDto, SearchUsersRequestDto, UpdateUserRequestDto } from '../dto';
 import { UserRecordDto } from '../dto';
 import { GetUserByUuidQuery, GetUsersQuery, SearchUsersQuery } from '../queries/impl';
-import type { User } from '../model/user.model';
+import type User from '../model/user.model';
 
 /**
  * user service class

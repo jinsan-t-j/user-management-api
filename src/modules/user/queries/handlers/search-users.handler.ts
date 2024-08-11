@@ -3,7 +3,7 @@ import { QueryHandler } from '@nestjs/cqrs';
 
 import { SearchUsersQuery } from '../impl/search-users.query';
 import { UserStore } from '../../stores/user.store';
-import type { User } from '../../model/user.model';
+import type User from '../../model/user.model';
 import { NoContentException } from '../../../../shared/exceptions';
 
 @QueryHandler(SearchUsersQuery)

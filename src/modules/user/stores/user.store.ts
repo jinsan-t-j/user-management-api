@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Op, type Transaction } from 'sequelize';
 import { InjectModel } from '@nestjs/sequelize';
 
-import { User } from '../model/user.model';
+import User from '../model/user.model';
 import type { UserRecordDto } from '../dto';
 import type { ISearchProps } from '../queries/types';
 

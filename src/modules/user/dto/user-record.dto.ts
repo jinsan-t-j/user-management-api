@@ -5,7 +5,7 @@ import { Exclude, Type } from 'class-transformer';
 
 import type { I18nTranslations } from '../../../i18n/types/i18n.generated';
 import { IsUsernameUnique } from '../decorators';
-import type { User } from '../model/user.model';
+import type User from '../model/user.model';
 
 export class UserRecordDto {
     @Exclude()

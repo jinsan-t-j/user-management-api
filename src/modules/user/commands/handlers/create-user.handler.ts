@@ -6,7 +6,7 @@ import { I18nService } from 'nestjs-i18n';
 
 import { CreateUserCommand } from '../impl/create-user.command';
 import { UserStore } from '../../stores/user.store';
-import type { User } from '../../model/user.model';
+import type User from '../../model/user.model';
 import type { I18nTranslations } from '../../../../i18n/types/i18n.generated';
 
 @CommandHandler(CreateUserCommand)

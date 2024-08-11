@@ -2,7 +2,7 @@ import { QueryHandler, type IQueryHandler } from '@nestjs/cqrs';
 
 import { GetUserByUsernameQuery } from '../impl';
 import { UserStore } from '../../stores/user.store';
-import type { User } from '../../model/user.model';
+import type User from '../../model/user.model';
 
 @QueryHandler(GetUserByUsernameQuery)
 export class GetUserByUsernameHandler implements IQueryHandler<GetUserByUsernameQuery> {

@@ -4,7 +4,7 @@ import { NotFoundException } from '@nestjs/common';
 
 import { GetUserByUuidQuery } from '../impl';
 import { UserStore } from '../../stores/user.store';
-import type { User } from '../../model/user.model';
+import type User from '../../model/user.model';
 import type { I18nTranslations } from '../../../../i18n/types/i18n.generated';
 
 @QueryHandler(GetUserByUuidQuery)

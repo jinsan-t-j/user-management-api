@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { CqrsModule } from '@nestjs/cqrs';
 
-import { User } from './model/user.model';
+import User from './model/user.model';
 import { UserStore } from './stores/user.store';
 import { userQueryHandlers } from './queries/handlers';
 import { userValidators } from './validators';

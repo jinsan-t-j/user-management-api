@@ -26,7 +26,7 @@ import {
     },
 })
 @UseInterceptors(ClassSerializerInterceptor)
-export class User extends Model {
+class User extends Model {
     @AutoIncrement
     @PrimaryKey
     @Exclude()
@@ -87,3 +87,5 @@ export class User extends Model {
     @Column({ allowNull: false, field: 'updated_at', type: DataType.DATE })
     updatedAt: Date;
 }
+
+export default User;

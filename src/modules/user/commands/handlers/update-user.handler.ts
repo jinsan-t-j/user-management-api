@@ -7,7 +7,7 @@ import { I18nService } from 'nestjs-i18n';
 import { UpdateUserCommand } from '../impl/update-user.command';
 import { UserStore } from '../../stores/user.store';
 import type { I18nTranslations } from '../../../../i18n/types/i18n.generated';
-import type { User } from '../../model/user.model';
+import type User from '../../model/user.model';
 
 @CommandHandler(UpdateUserCommand)
 export class UpdateUserHandler implements ICommandHandler<UpdateUserCommand> {

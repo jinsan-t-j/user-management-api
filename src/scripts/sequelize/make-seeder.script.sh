@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Function to convert a string to snake case
+to_snake_case() {
+    local string="$1"
+
+    # Convert to snake case
+    snake_case_string=$(echo "${string}" | sed 's/\([a-z0-9]\)\([A-Z]\)/\1_\2/g')
+
+    # Convert to lowercase
+    snake_case_string=$(echo "${snake_case_string}" | tr '[:upper:]' '[:lower:]')
+
+    echo "${snake_case_string}"
+}
+
 # Supported colors.
 RED="\e[31m"
 GREEN="\e[32m"
@@ -10,6 +23,11 @@ unset SEEDER_NAME
 while [ -z ${SEEDER_NAME} ]; do
     echo -n -e "${GREEN}Enter the seeder name: ${ENDCOLOR}"; read -r SEEDER_NAME
 done
+
+# Check if the seeder name is in snake case. if not convert to snake case.
+if ! [[ "${SEEDER_NAME}" =~ ^[a-z0-9_]+$ ]]; then
+    SEEDER_NAME="$(to_snake_case "${SEEDER_NAME}")"
+fi
 
 # Define the path where seeders should be stored.
 SEEDER_PATH="./src/database/seeders"
@@ -31,7 +49,7 @@ if [ ! -f "${SEEDER_TEMPLATE}" ] || [ ! -s ${SEEDER_TEMPLATE} ]; then
 fi
 
 # Create the seeder file with timestamp
-TIMESTAMP=$(date +"%Y%m%d%H%M%S")
+TIMESTAMP=$(date +"%Y_%m_%d_%H%M%S")
 SEEDER_FILE="${SEEDER_PATH}/${TIMESTAMP}-${SEEDER_NAME}.ts"
 
 # Create the seeder file

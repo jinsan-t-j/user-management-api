@@ -27,13 +27,13 @@ services:
       - ADMINER_DESIGN=galkaev
       - ADMINER_DEFAULT_SERVER=user-db
     ports:
-      - 8001:8080
+      - 9001:8080
   
   user-redis:
     container_name: user-redis
     image: 'redis:alpine'
     ports:
-      - '8004:6379'
+      - '9004:6379'
 
 volumes:
   userdb-data:

@@ -4,7 +4,7 @@
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8000, 8001],
+	"forwardPorts": [8000, 8001, 8002],
 
 	// Configure tool-specific properties.
 	"customizations": {

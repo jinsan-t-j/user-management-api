@@ -28,6 +28,12 @@ services:
       - ADMINER_DEFAULT_SERVER=user-db
     ports:
       - 8001:8080
+  
+  user-redis:
+    container_name: user-redis
+    image: 'redis:alpine'
+    ports:
+      - '8004:6379'
 
 volumes:
   userdb-data:

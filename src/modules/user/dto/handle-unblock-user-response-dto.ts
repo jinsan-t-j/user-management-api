@@ -6,7 +6,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class HandleUnBlockUserResponseDto {
     @ApiProperty({
         type: String,
-        description: 'User unblocked successfully ',
+        description: 'User is unblocked successfully ',
         example: 'The user is unblocked successfully',
     })
     message: string;

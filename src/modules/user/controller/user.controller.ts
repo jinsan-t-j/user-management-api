@@ -25,7 +25,7 @@ import { I18nService } from 'nestjs-i18n';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 
 import { UserService } from '../services/user.service';
-import type { SearchUsersResponseDto } from '../dto';
+import { SearchUsersResponseDto } from '../dto';
 import {
     CreateUserRequestDto,
     CreateUserResponseDto,
@@ -42,7 +42,7 @@ import { Public } from '../../../shared/decorators';
 @ApiTags('User')
 @ApiBearerAuth('jwt-auth')
 @UseInterceptors(ClassSerializerInterceptor)
-@Controller({ path: 'user', version: '1' })
+@Controller({ path: 'users', version: '1' })
 export class UserController {
     public constructor(
         private readonly userService: UserService,
@@ -159,6 +159,10 @@ export class UserController {
     @ApiBody({ type: SearchUsersRequestDto, required: false })
     @ApiNoContentResponse({ description: 'No users found' })
     @UseInterceptors(CacheInterceptor)
+    @ApiOkResponse({
+        description: 'The users are retrieved successfully',
+        type: SearchUsersResponseDto,
+    })
     async search(
         @Body() searchUsersRequestDto?: SearchUsersRequestDto,
         @Query('username') username?: string,

@@ -6,10 +6,6 @@ import { map } from 'rxjs/operators';
 
 interface ApiResponse<T> {
     /**
-     * The boolean value for notifying the success response.
-     */
-    success: boolean;
-    /**
      * The text for displaying the credibility of the response.
      */
     message: string;

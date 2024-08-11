@@ -55,7 +55,7 @@ export class DeleteUserHandler implements ICommandHandler<DeleteUserCommand> {
             return !!deleted;
         } catch (err) {
             await transaction.rollback();
-            this.logger.error('Updating user failed.', err);
+            this.logger.error('Deleting the user failed.', err);
             throw err;
         }
     }
